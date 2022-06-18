@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>구글 로그인 API 샘플</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="/public/css/common/common.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://accounts.google.com/gsi/client" onload="console.log('TODO: add onload function')">  </script>
+    <script src="/public/js/common/common.js"></script>
+  </head>
+  <body>
+    <div>
+      <button onclick="client.requestCode();">Authorize with Google</button>
+    </div>
+    <script>
+      const client = google.accounts.oauth2.initCodeClient({
+        client_id: '<%= client_id %>',
+        scope: '<%= scope %>',
+        ux_mode: 'redirect',
+        redirect_uri: '<%= redirect_uri %>',
+        state: new Date().getTime() + '_code',
+      });
+    </script>
+  </body>
+</html>
